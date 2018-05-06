@@ -61,8 +61,8 @@ const getSId = icon => {
 const getExternalUrl = async sId => {
   //authentication
   const spotifyApi = new SpotifyWebApi({
-    clientId: "your client id", // "49dbf7b7e1ad4227bff035e0f8d999a5",
-    clientSecret: "your client secret" // "db6588538fd0431e8033646500be159c"
+    clientId: "your client id", 
+    clientSecret: "your client secret" 
   });
   const accessTokenObj = await spotifyApi.clientCredentialsGrant();
   spotifyApi.setAccessToken(accessTokenObj.body["access_token"]);
