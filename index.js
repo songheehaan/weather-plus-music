@@ -33,6 +33,10 @@ const getWeatherWithIp = async () => {
 };
 
 // Assign the playlist according to the weather catagory.
+const sIdMap={rain:'37i9dQZF1DXbvABJXBIyiY',snow:'37i9dQZF1DXd7ukl5yRLE3',clear:'37i9dQZF1DX1BzILRveYHb',
+wind:'37i9dQZF1DWYYeI1QdFxzU',cloudy:'06Y0QSTQucnveI75usZ5Ki'}
+
+/*
 const getSId = icon => {
   let sId = "";
   switch (icon) {
@@ -55,12 +59,14 @@ const getSId = icon => {
       sId = "cannot find the playlist";
   }
   return sId;
-};
+}; */
+
+const spotifyApi;
 
 //Get a track's external url from the playlist
 const getExternalUrl = async sId => {
   //authentication
-  const spotifyApi = new SpotifyWebApi({
+  spotifyApi = new SpotifyWebApi({
     clientId: "your client id", 
     clientSecret: "your client secret" 
   });
@@ -80,7 +86,8 @@ const getExternalUrl = async sId => {
 const main = async () => {
   try {
     const weatherResult = await getWeatherWithIp();
-    const sId = await getSId(weatherResult[0]);
+	const sId = sIdMap[weatherResult[0]]
+    //const sId = await getSId(weatherResult[0]);
     const externalUrl = await getExternalUrl(sId);
     console.log("Weather : " + weatherResult[1]);
     console.log("Track's External Url : " + externalUrl);
