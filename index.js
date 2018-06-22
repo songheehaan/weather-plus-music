@@ -86,7 +86,7 @@ const getExternalUrl = async sId => {
 const main = async () => {
   try {
     const weatherResult = await getWeatherWithIp();
-	const sId = sIdMap[weatherResult[0]]
+    const sId = sIdMap[weatherResult[0]];
     //const sId = await getSId(weatherResult[0]);
     const externalUrl = await getExternalUrl(sId);
     console.log("Weather : " + weatherResult[1]);
